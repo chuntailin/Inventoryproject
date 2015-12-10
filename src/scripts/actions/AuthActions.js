@@ -17,5 +17,10 @@ export default {
     AppDispatcher.dispatch({
       action: AuthConstants.AUTH_LOGOUT
     });
+  },
+  match() {
+    AppDispatcher.dispatch({
+      action: AuthConstants.AUTH_MATCH
+    });
   }
 }

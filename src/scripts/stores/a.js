@@ -10,7 +10,6 @@ const CHANGE_EVENT = 'change';
 
 let _token = localStorage.accessToken;
 let _name = '';
-let materialArray = [1000,500,100,100,500]
 
 const AuthStore = assign({}, EventEmitter.prototype, {
   emitChange() {
@@ -53,9 +52,6 @@ AppDispatcher.register((payload) => {
       _name = '';
       AuthStore.emitChange();
       break;
-
-    case AuthConstants.AUTH_MATCH:
-
   }
 
   return true;
