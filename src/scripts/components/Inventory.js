@@ -23,20 +23,24 @@ const styles = {
   nameA:{
     flex: 1,
     color: '#CCDDFF',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize:'2em'
   },
     nameB:{
     flex: 1,
     color: '#483D8B',
-    textAlign: 'center'
+    textAlign: 'center',
+    fontSize:'2em'
   },
   input:{
-    flex:1
+    flex:1,
+    textAlign:'center',
+    fontSize:'1.5em'
   },
   button:{
     flex: 1,
     color: '#666666',
-    fontSize: '2em'
+    fontSize: '1.5em'
   },
   blankDiv:{
     flex:1
@@ -47,8 +51,19 @@ const Inventory = React.createClass({
   render() {
     return (
       <div style={styles.wrap}>
-        <div>
-          <p> 品項&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;希望安全存量&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存貨狀態&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;存貨數量 </p>     
+        <div style={{display:'flex'}}>
+          <div style={{'flex':1, paddingLeft:'100px',fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+            <p> 品項 </p>
+          </div>
+          <div style={{'flex':1, paddingLeft:'30px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+            <p> 希望安全存量 </p>
+          </div>
+          <div style={{'flex':1, paddingLeft:'350px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+            <p> 存貨狀態 </p>
+          </div>
+          <div style={{'flex':1, paddingLeft:'50px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+            <p> 存貨數量 </p>
+          </div>
         </div>
 
         <div id='noodle' style={styles.divA}>
