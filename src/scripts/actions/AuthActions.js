@@ -18,9 +18,11 @@ export default {
       action: AuthConstants.AUTH_LOGOUT
     });
   },
-  match() {
+
+  match(noodle) {
     AppDispatcher.dispatch({
-      action: AuthConstants.AUTH_MATCH
+      action: AuthConstants.AUTH_MATCH,
+      noodle: noodle
     });
   }
 }

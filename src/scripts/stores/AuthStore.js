@@ -8,9 +8,7 @@ const localStorage = localStorage || {};
 
 const CHANGE_EVENT = 'change';
 
-let _token = localStorage.accessToken;
-let _name = '';
-let materialArray = [1000,500,100,100,500]
+let materialArray = [50,500,100,100,500]
 
 const AuthStore = assign({}, EventEmitter.prototype, {
   emitChange() {
@@ -25,39 +23,22 @@ const AuthStore = assign({}, EventEmitter.prototype, {
     return this.removeListener(CHANGE_EVENT, listener);
   },
 
-  getStatus() {
-    return _token ? AuthConstants.AUTH_STATE_LOGINED : AuthConstants.AUTH_STATE_GUEST;
-  },
 
-  getToken() {
-    return _token;
-  },
-
-  getName() {
-    return _name;
-  }
 });
 
 AppDispatcher.register((payload) => {
   const action = payload.action;
 
   switch (action) {
-    case AuthConstants.AUTH_LOGIN_SUCCESSFUL:
-      _token = payload.token;
-      _name = payload.name;
-      AuthStore.emitChange();
-      break;
-
-    case AuthConstants.AUTH_LOGOUT:
-      _token = null;
-      _name = '';
-      AuthStore.emitChange();
-      break;
-
     case AuthConstants.AUTH_MATCH:
-
+      if (payload.noodle > materialArray[0]){
+        console.log("Enough");
+      }else{
+        console.log("Not Enough");
+      }
+      AuthStore.emitChange();
+    break;
   }
-
   return true;
 });
 
