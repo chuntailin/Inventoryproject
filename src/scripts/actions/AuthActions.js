@@ -19,10 +19,38 @@ export default {
     });
   },
 
-  match(noodle) {
+  matchNoodle(noodle) {
     AppDispatcher.dispatch({
-      action: AuthConstants.AUTH_MATCH,
+      action: AuthConstants.AUTH_MATCHNOODLE,
       noodle: noodle
+    });
+  },
+
+  matchMother(mother) {
+    AppDispatcher.dispatch({
+      action: AuthConstants.AUTH_MATCHMOTHER,
+      mother: mother
+    });
+  },
+
+  matchEgg(egg) {
+    AppDispatcher.dispatch({
+      action: AuthConstants.AUTH_MATCHEGG,
+      egg: egg
+    });
+  },
+
+  matchSugar(sugar) {
+    AppDispatcher.dispatch({
+      action: AuthConstants.AUTH_MATCHSUGAR,
+      sugar: sugar
+    });
+  },
+
+  matchMilk(milk) {
+    AppDispatcher.dispatch({
+      action: AuthConstants.AUTH_MATCHMILK,
+      milk: milk
     });
   }
 }

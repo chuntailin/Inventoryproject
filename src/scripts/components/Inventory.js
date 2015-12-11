@@ -52,13 +52,19 @@ const styles = {
 const Inventory = React.createClass({
 
   getInitialState(){
-    return{
+    var materials = {
       noodle: '',
       mother: '',
       egg: '',
       sugar: '',
-      milk: ''
-    }
+      milk: '',
+      noodle1: '',
+      mother1: '',
+      egg1: '',
+      sugar1: '',
+      milk1: ''
+    };
+    return materials;
   },
 
   componentDidMount(){
@@ -110,11 +116,43 @@ const Inventory = React.createClass({
   },
 
   _onNoodleSubmit(){
-    AuthActions.match(this.state.noodle);
+    AuthActions.matchNoodle(this.state.noodle);
 
     this.setState({
-      noodle: ''
-    })
+      noodle1: AuthStore.getNoodle()
+    });
+  },
+
+  _onMotherSubmit(){
+    AuthActions.matchMother(this.state.mother);
+
+    this.setState({
+      mother1: AuthStore.getMother()
+    });
+  },
+
+  _onEggSubmit(){
+    AuthActions.matchEgg(this.state.egg);
+
+    this.setState({
+      egg1: AuthStore.getEgg()
+    });
+  },
+
+  _onSugarSubmit(){
+    AuthActions.matchSugar(this.state.sugar);
+
+    this.setState({
+      sugar1: AuthStore.getSugar()
+    });
+  },
+
+  _onMilkSubmit(){
+    AuthActions.matchMilk(this.state.milk);
+
+    this.setState({
+      milk1: AuthStore.getMilk()
+    });
   },
 
   render() {
@@ -139,40 +177,52 @@ const Inventory = React.createClass({
           <h2 style={styles.nameA}> 麵粉 </h2>
           <input style={styles.input} onChange={this._onNoodleChange} value={this.state.noodle}></input>
           <button style={styles.button} onClick={this._onNoodleSubmit}>確認</button>
-          <div style={styles.blankDiv}></div>
-          <div style={styles.blankDiv}></div>
+          <div style={styles.blankDiv}>
+            <p> hello </p>
+          </div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.noodle1}</h1>
+          </div>
         </div>
 
         <div id='mother' style={styles.divB}>
           <h2 style={styles.nameB}> 酵母 </h2>
           <input style={styles.input} onChange={this._onMotherChange} value={this.state.mother}></input>
-          <button style={styles.button} onClick={this._onSubmit}>確認</button>
+          <button style={styles.button} onClick={this._onMotherSubmit}>確認</button>
           <div style={styles.blankDiv}></div>
-          <div style={styles.blankDiv}></div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.mother1}</h1>
+          </div>
         </div>
 
         <div id='egg' style={styles.divA}>
           <h2 style={styles.nameA}> 雞蛋 </h2>
           <input style={styles.input} onChange={this._onEggChange} value={this.state.egg}></input>
-          <button style={styles.button} onClick={this._onSubmit}>確認</button>
+          <button style={styles.button} onClick={this._onEggSubmit}>確認</button>
           <div style={styles.blankDiv}></div>
-          <div style={styles.blankDiv}></div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.egg1}</h1>
+          </div>
         </div>
 
         <div id='sugar' style={styles.divB}>
           <h2 style={styles.nameB}> 糖 </h2>
           <input style={styles.input} onChange={this._onSugarChange} value={this.state.sugar}></input>
-          <button style={styles.button} onClick={this._onSubmit}>確認</button>
+          <button style={styles.button} onClick={this._onSugarSubmit}>確認</button>
           <div style={styles.blankDiv}></div>
-          <div style={styles.blankDiv}></div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.sugar1}</h1>
+          </div>
         </div>
 
         <div id='milk' style={styles.divA}>
           <h2 style={styles.nameA}> 牛奶 </h2>
           <input style={styles.input} onChange={this._onMilkChange} value={this.state.milk}></input>
-          <button style={styles.button} onClick={this._onSubmit}>確認</button>
+          <button style={styles.button} onClick={this._onMilkSubmit}>確認</button>
           <div style={styles.blankDiv}></div>
-          <div style={styles.blankDiv}></div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.milk1}</h1>
+          </div>
         </div>
       </div>
     )
