@@ -3,7 +3,7 @@ import {Link} from 'react-router-component';
 
 const styles = {
   wrap: {
-    backgroundColor: '#FFDDAA',
+    backgroundColor: 'rgb(254,226,128)',
     height: '600px',
     overflow: 'hidden',
     width:'100%',

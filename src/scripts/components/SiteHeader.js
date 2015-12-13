@@ -5,7 +5,7 @@ import {NavigatableMixin} from 'react-router-component';
 
 const styles = {
   header: {
-    backgroundColor: '#FFBB66',
+    backgroundColor: 'rgb(254,179,129)',
     borderBottom: '1px solid #DDD',
     height: '150px'
   },
