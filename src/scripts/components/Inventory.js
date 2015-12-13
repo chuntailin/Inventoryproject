@@ -58,11 +58,16 @@ const Inventory = React.createClass({
       egg: '',
       sugar: '',
       milk: '',
-      noodle1: '',
-      mother1: '',
-      egg1: '',
-      sugar1: '',
-      milk1: ''
+      inventoryNoodle: '',
+      inventoryMother: '',
+      inventoryEgg: '',
+      inventorySugar: '',
+      inventoryMilk: '',
+      noodleState: '',
+      motherState: '',
+      eggState: '',
+      sugarState: '',
+      milkState: ''
     };
     return materials;
   },
@@ -77,11 +82,11 @@ const Inventory = React.createClass({
 
   materialUpdate(){
     this.setState({
-      noodle: '',
-      mother: '',
-      egg: '',
-      sugar: '',
-      milk: ''
+      noodle: this.state.noodle,
+      mother: this.state.mother,
+      egg: this.state.egg,
+      sugar: this.state.sugar,
+      milk: this.state.milk
     });
   },
 
@@ -119,7 +124,9 @@ const Inventory = React.createClass({
     AuthActions.matchNoodle(this.state.noodle);
 
     this.setState({
-      noodle1: AuthStore.getNoodle()
+      noodle: this.state.noodle,
+      inventoryNoodle: AuthStore.getNoodle(),
+      noodleState: AuthStore.matchNoodle(this.state.noodle)
     });
   },
 
@@ -127,7 +134,9 @@ const Inventory = React.createClass({
     AuthActions.matchMother(this.state.mother);
 
     this.setState({
-      mother1: AuthStore.getMother()
+      mother: this.state.mother,
+      inventoryMother: AuthStore.getMother(),
+      motherState: AuthStore.matchMother(this.state.mother)
     });
   },
 
@@ -135,7 +144,9 @@ const Inventory = React.createClass({
     AuthActions.matchEgg(this.state.egg);
 
     this.setState({
-      egg1: AuthStore.getEgg()
+      egg: this.state.egg,
+      inventoryEgg: AuthStore.getEgg(),
+      eggState: AuthStore.matchEgg(this.state.egg)
     });
   },
 
@@ -143,7 +154,9 @@ const Inventory = React.createClass({
     AuthActions.matchSugar(this.state.sugar);
 
     this.setState({
-      sugar1: AuthStore.getSugar()
+      sugar: this.state.sugar,
+      inventorySugar: AuthStore.getSugar(),
+      sugarState: AuthStore.matchSugar(this.state.sugar)
     });
   },
 
@@ -151,7 +164,9 @@ const Inventory = React.createClass({
     AuthActions.matchMilk(this.state.milk);
 
     this.setState({
-      milk1: AuthStore.getMilk()
+      milk: this.state.milk,
+      inventoryMilk: AuthStore.getMilk(),
+      milkState: AuthStore.matchMilk(this.state.milk)
     });
   },
 
@@ -162,13 +177,13 @@ const Inventory = React.createClass({
           <div style={{'flex':1, paddingLeft:'100px',fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
             <p> 品項 </p>
           </div>
-          <div style={{'flex':1, paddingLeft:'30px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+          <div style={{'flex':1, paddingLeft:'60px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
             <p> 希望安全存量 </p>
           </div>
-          <div style={{'flex':1, paddingLeft:'350px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+          <div style={{'flex':1, paddingLeft:'370px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
             <p> 存貨狀態 </p>
           </div>
-          <div style={{'flex':1, paddingLeft:'50px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
+          <div style={{'flex':1, paddingLeft:'90px', fontSize:'1.2em',fontFamily:'impact',color:'#800000'}}>
             <p> 存貨數量 </p>
           </div>
         </div>
@@ -178,10 +193,10 @@ const Inventory = React.createClass({
           <input style={styles.input} onChange={this._onNoodleChange} value={this.state.noodle}></input>
           <button style={styles.button} onClick={this._onNoodleSubmit}>確認</button>
           <div style={styles.blankDiv}>
-            <p> hello </p>
+            <h1 style={{textAlign:'center'}}> {this.state.noodleState} </h1>
           </div>
           <div style={styles.blankDiv}>
-            <h1>{this.state.noodle1}</h1>
+            <h1 style={{textAlign:'center'}}>{this.state.inventoryNoodle}</h1>
           </div>
         </div>
 
@@ -189,9 +204,11 @@ const Inventory = React.createClass({
           <h2 style={styles.nameB}> 酵母 </h2>
           <input style={styles.input} onChange={this._onMotherChange} value={this.state.mother}></input>
           <button style={styles.button} onClick={this._onMotherSubmit}>確認</button>
-          <div style={styles.blankDiv}></div>
           <div style={styles.blankDiv}>
-            <h1>{this.state.mother1}</h1>
+            <h1> {this.state.motherState} </h1>
+          </div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.inventoryMother}</h1>
           </div>
         </div>
 
@@ -199,9 +216,11 @@ const Inventory = React.createClass({
           <h2 style={styles.nameA}> 雞蛋 </h2>
           <input style={styles.input} onChange={this._onEggChange} value={this.state.egg}></input>
           <button style={styles.button} onClick={this._onEggSubmit}>確認</button>
-          <div style={styles.blankDiv}></div>
           <div style={styles.blankDiv}>
-            <h1>{this.state.egg1}</h1>
+            <h1> {this.state.eggState} </h1>
+          </div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.inventoryEgg}</h1>
           </div>
         </div>
 
@@ -209,9 +228,11 @@ const Inventory = React.createClass({
           <h2 style={styles.nameB}> 糖 </h2>
           <input style={styles.input} onChange={this._onSugarChange} value={this.state.sugar}></input>
           <button style={styles.button} onClick={this._onSugarSubmit}>確認</button>
-          <div style={styles.blankDiv}></div>
           <div style={styles.blankDiv}>
-            <h1>{this.state.sugar1}</h1>
+            <h1> {this.state.sugarState} </h1>
+          </div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.inventorySugar}</h1>
           </div>
         </div>
 
@@ -219,9 +240,11 @@ const Inventory = React.createClass({
           <h2 style={styles.nameA}> 牛奶 </h2>
           <input style={styles.input} onChange={this._onMilkChange} value={this.state.milk}></input>
           <button style={styles.button} onClick={this._onMilkSubmit}>確認</button>
-          <div style={styles.blankDiv}></div>
           <div style={styles.blankDiv}>
-            <h1>{this.state.milk1}</h1>
+            <h1> {this.state.milkState} </h1>
+          </div>
+          <div style={styles.blankDiv}>
+            <h1>{this.state.inventoryMilk}</h1>
           </div>
         </div>
       </div>
